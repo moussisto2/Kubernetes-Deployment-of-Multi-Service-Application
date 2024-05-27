@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-end-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-end
+  template:
+    metadata:
+      labels:
+        app: front-end
+    spec:
+      containers:
+      - name: front-end-container
+        image: moussisto/myservice:frontend
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
